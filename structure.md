@@ -1,6 +1,6 @@
 # NumLogic 项目结构文档
 
-> **版本**: v1.1  
+> **版本**: v1.2  
 > **更新时间**: 2025-01-19  
 > **维护**: Claude Code 自动生成
 
@@ -47,6 +47,8 @@ NumLogic/
     └── src/                    # 源代码目录
         ├── main.ts             # 应用入口文件
         ├── App.vue             # 根组件
+        ├── types/              # TypeScript 类型定义(新增)
+        │   └── calculator.ts   # 计算器类型定义(新增)
         ├── assets/             # 静态资源
         │   ├── base.css        # 基础样式
         │   ├── main.css        # 主样式文件
@@ -157,3 +159,11 @@ npm run format     # 代码格式化
 
 **功能说明：**
 - ✅ CalculatorButton 组件：可复用的计算器按钮，支持数字、运算符、功能键和等号四种类型，包含悬停效果、按压反馈和响应式设计
+
+### v1.2 (2025-01-19)
+**新增类型定义：**
+- ✅ `frontend/src/types/` - TypeScript 类型定义目录
+- ✅ `frontend/src/types/calculator.ts` - 计算器核心类型定义文件
+
+**功能说明：**
+- ✅ calculator.ts 类型文件：包含完整的计算器类型系统，定义了操作符、按钮配置、状态管理、历史记录、内存管理等所有相关接口和类型，为后续开发提供类型安全保障
