@@ -1,6 +1,6 @@
 # NumLogic 项目结构文档
 
-> **版本**: v1.2  
+> **版本**: v1.3  
 > **更新时间**: 2025-01-19  
 > **维护**: Claude Code 自动生成
 
@@ -67,6 +67,7 @@ NumLogic/
         ├── router/             # 路由配置
         │   └── index.ts        # 路由定义
         ├── stores/             # Pinia 状态管理
+        │   ├── calculatorStore.ts # 计算器状态管理(新增)
         │   └── counter.ts      # 示例 store
         └── views/              # 页面组件
             ├── HomeView.vue    # 首页
@@ -167,3 +168,10 @@ npm run format     # 代码格式化
 
 **功能说明：**
 - ✅ calculator.ts 类型文件：包含完整的计算器类型系统，定义了操作符、按钮配置、状态管理、历史记录、内存管理等所有相关接口和类型，为后续开发提供类型安全保障
+
+### v1.3 (2025-01-19)
+**新增状态管理：**
+- ✅ `frontend/src/stores/calculatorStore.ts` - 计算器 Pinia 状态管理
+
+**功能说明：**
+- ✅ calculatorStore.ts：完整的计算器状态管理系统，包含数字输入、运算符处理、计算执行、内存操作、历史记录、错误处理等核心功能，采用 Pinia 架构提供响应式状态管理
