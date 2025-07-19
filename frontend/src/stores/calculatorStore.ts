@@ -8,7 +8,9 @@ import type {
   CalculatorState,
   OperatorType,
   CalculationHistory,
-  MemoryState,
+  MemoryState
+} from '@/types/calculator'
+import {
   INITIAL_STATE,
   ERROR_MESSAGES
 } from '@/types/calculator'
