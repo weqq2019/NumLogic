@@ -357,6 +357,8 @@ Claude 执行流程：
 
 - 📋 **详细结构**: @structure.md  
 - 📖 **用户文档**: @README.md
+- 📝 **版本历史**: @CHANGELOG.md
+- 🎓 **学习指南**: @doc/新手学习指南.md
 
 ## 核心架构模式
 
@@ -365,3 +367,27 @@ Claude 执行流程：
 - **路由**: Vue Router
 - **代码规范**: ESLint
 - **未来规划**: UniApp 多端适配
+
+## 文档管理规范
+
+### 📋 CHANGELOG.md 维护
+
+项目采用标准的变更日志管理：
+
+- **格式标准**: 遵循 [Keep a Changelog](https://keepachangelog.com/) 规范
+- **更新时机**: 每次重要功能开发完成后更新
+- **分类方式**: Added/Changed/Deprecated/Removed/Fixed/Security
+- **维护工具**: 使用 `@project-rules-cn/更新变更日志.mdc` 规则
+
+### 📝 使用方式
+
+```bash
+/更新变更日志 1.8.0 added "新增暗色主题功能"
+/更新变更日志 1.7.1 fixed "修复计算器精度问题"
+```
+
+### 🔗 文档关系
+
+- **CHANGELOG.md** - 记录所有版本变更
+- **structure.md** - 引用 CHANGELOG.md，避免重复
+- **README.md** - 用户快速上手指南
