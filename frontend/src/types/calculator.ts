@@ -119,7 +119,7 @@ export interface CalculatorSettings {
 }
 
 // API 响应类型 (为未来扩展准备)
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean
   data?: T
   message?: string

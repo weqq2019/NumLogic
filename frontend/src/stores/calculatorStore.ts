@@ -7,8 +7,7 @@ import { defineStore } from 'pinia'
 import type {
   CalculatorState,
   OperatorType,
-  CalculationHistory,
-  MemoryState
+  CalculationHistory
 } from '@/types/calculator'
 import {
   INITIAL_STATE,
@@ -162,7 +161,7 @@ export const useCalculatorStore = defineStore('calculator', {
     calculate() {
       if (this.error) return
 
-      const inputValue = parseFloat(this.currentNumber || this.display)
+      // const inputValue = parseFloat(this.currentNumber || this.display)
       
       if (this.previousNumber !== '' && this.operator) {
         const result = this.performCalculation()
