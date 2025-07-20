@@ -310,6 +310,9 @@ git remote -v
 1. **完成代码修改**后，主动询问用户是否执行 Git 工作流
 2. **等待用户确认**后，调用 `/commit` 执行标准提交流程
 3. **强制 issue 关联**：所有提交必须包含 `#issue-number`
+   - 当前活跃 Issue 可查看 `@structure.md` 中的"📈 当前进度"
+   - 如用户未指定 Issue 编号，应主动查看 structure.md 确定合适的编号
+   - 文档相关工作通常使用当前活跃的 Issue 编号
 
 ### 🔤 触发条件
 
@@ -353,15 +356,18 @@ Claude 执行流程：
 
 ### 📌 特殊情况处理
 
-- 如果用户未提供 issue 编号，提醒创建或使用通用 issue
-- 建议预设通用 issue：#1(文档), #2(配置), #3(功能), #4(修复)
+- 如果用户未提供 issue 编号，应查看 `@structure.md` 确定当前活跃的 Issue
+- **Issue 编号获取顺序**：
+  1. 用户明确指定的编号
+  2. 从 @structure.md "📈 当前进度" 获取当前活跃编号
+  3. 根据修改类型选择合适的规划编号
 - 必要时可使用 `/commit-fast` 进行快速提交 (参考: `@project-rules-cn/快速提交.mdc`)
 
 ---
 
 # 📊 项目架构概览
 
-- 📋 **详细结构**: @structure.md  
+- 📋 **详细结构**: @structure.md (包含 Issue 编号规划和当前进度)
 - 📖 **用户文档**: @README.md
 - 📝 **版本历史**: @CHANGELOG.md
 - 🎓 **学习指南**: @doc/新手学习指南.md
