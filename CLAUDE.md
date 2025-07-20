@@ -278,97 +278,48 @@ Claude Code 在以下情况时，**考虑更新 `README.md` 文件**：
 
 # 🚀 Git 自动化工作流
 
-## Git 环境预检查
+> 基于 `@project-rules/commit.mdc` 规则，扩展 NumLogic 项目的 AI 协作流程
 
-在执行 Git 工作流之前，Claude 应该检查以下环境配置：
+## 核心提交规则
 
-### 必要配置检查
+使用 `@project-rules/commit.mdc` 的标准化提交流程：
+- 自动预检查 (lint/build/docs)
+- Conventional commits 格式
+- 完整的 emoji 类型映射 (28 种)
+- 原子化提交建议
+
+## 项目特化扩展
+
+### 📋 Git 环境预检查
+
+在执行 Git 工作流之前，额外检查：
+
 ```bash
-# 1. 检查用户身份配置
+# 检查用户身份配置
 git config user.name
 git config user.email
 
-# 2. 检查远程仓库连接
+# 检查远程仓库连接
 git remote -v
-
-# 3. 检查当前分支状态
-git status
-git branch
 ```
 
-### 预检查清单
-- ✅ **用户身份**：确保已配置 `user.name` 和 `user.email`
-- ✅ **远程仓库**：确保已连接到正确的远程仓库
-- ✅ **分支状态**：确认当前在正确的分支上
-- ✅ **工作区状态**：了解当前有哪些文件被修改
-- ⚠️ **SSH/Token**：确保有推送权限（如需要 push）
+### 🎯 AI 协作流程
 
-### 配置缺失处理
-1. **缺少用户配置**：提示用户先配置 Git 身份
-2. **缺少远程仓库**：询问是否需要添加远程仓库
-3. **权限问题**：提示检查 SSH 密钥或访问令牌
-
-## 自动提交指令
-
-当用户要求 Claude 进行代码修改后自动提交时，Claude 应该：
+当用户要求 Claude 进行代码修改后自动提交时：
 
 1. **完成代码修改**后，主动询问用户是否执行 Git 工作流
-2. **等待用户确认**后，再执行 Git 命令序列
-3. **使用标准化的提交消息格式**，包含 emoji 和 issue 编号
+2. **等待用户确认**后，调用 `/commit` 执行标准提交流程
+3. **强制 issue 关联**：所有提交必须包含 `#issue-number`
 
-## Git 提交消息模板
+### 🔤 触发条件
 
-使用以下格式的提交消息：
-```
-<emoji> <type>: <description> #issue-number
-
-🚀 Generated with [Claude Code](https://claude.ai/code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-```
-
-**📌 重要**：issue编号为必填项，如果当前没有对应issue，请先创建一个。
-
-### Emoji 映射规则
-- 🚀 `feat` - 新功能
-- 🐛 `fix` - 修复bug
-- 📝 `docs` - 文档更新
-- 💄 `style` - 代码格式化
-- ♻️ `refactor` - 重构代码
-- ⚡ `perf` - 性能优化
-- ✅ `test` - 添加测试
-- 🔧 `chore` - 构建配置
-- 🗃️ `db` - 数据库相关
-- 🔒 `security` - 安全相关
-
-### 自动化命令序列
-```bash
-# 1. 添加所有更改
-git add .
-
-# 2. 使用模板提交
-git commit -m "$(cat <<'EOF'
-<emoji> <type>: <description> #issue-number
-
-🚀 Generated with [Claude Code](https://claude.ai/code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-EOF
-)"
-
-# 3. 推送到远程（可选，根据用户需求）
-git push
-```
-
-## 触发条件
-
-当用户使用以下关键词时，Claude 应自动执行 Git 工作流：
+当用户使用以下关键词时，Claude 应执行 Git 工作流：
 - "提交代码"、"commit"
 - "推送代码"、"push" 
 - "自动提交"、"auto commit"
 - "git 提交"
 
-## 示例用法
+### 📝 示例用法
 
 用户：**"修改完数据收集器后自动提交代码 #12"**
 
@@ -376,29 +327,28 @@ Claude 执行流程：
 1. 完成代码修改
 2. **主动询问**：
    ```
-   ✅ 代码修改完成！是否执行以下 Git 工作流？
+   ✅ 代码修改完成！是否执行 Git 工作流？
    
    📋 预览操作：
-   - git add .
-   - git commit -m "♻️ refactor: 优化数据收集器架构和性能 #12"
-   - git push（可选）
+   - 调用 /commit 执行标准提交流程
+   - 自动添加 issue 关联: #12
    
    请回复：yes/y 执行 | no/n 跳过 | push 执行并推送
    ```
 
-**📌 特殊情况处理**：
-- 如果用户未提供issue编号，Claude应提醒创建issue或使用通用issue编号
-- 建议预设通用issue：#1(文档), #2(配置), #3(功能), #4(修复)
-3. **等待用户确认**后执行相应操作
-4. 使用标准化提交消息格式
+3. **等待用户确认**后执行 `/commit` 并确保包含 issue 编号
 
-## 确认响应选项
+### 🔧 确认响应选项
 
-用户可以回复：
-- **`yes` / `y`** - 执行 add + commit
-- **`push` / `p`** - 执行 add + commit + push  
+- **`yes` / `y`** - 执行 `/commit`
+- **`push` / `p`** - 执行 `/commit` + push
 - **`no` / `n`** - 跳过所有 Git 操作
-- **`preview`** - 仅显示将要执行的命令，不执行
+- **`preview`** - 显示将要执行的命令
+
+### 📌 特殊情况处理
+
+- 如果用户未提供 issue 编号，提醒创建或使用通用 issue
+- 建议预设通用 issue：#1(文档), #2(配置), #3(功能), #4(修复)
 
 ---
 
