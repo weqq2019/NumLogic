@@ -319,6 +319,12 @@ git remote -v
 - "自动提交"、"auto commit"
 - "git 提交"
 
+### 🚀 可用命令
+
+- **`/commit`** - 执行标准提交流程 (参考: `@project-rules-cn/提交规范.mdc`)
+- **`/commit-fast`** - 执行快速提交流程 (参考: `@project-rules-cn/快速提交.mdc`)  
+- **`/push`** - 执行一键推送工作流 (参考: `@project-rules-cn/一键推送.mdc`)
+
 ### 📝 示例用法
 
 用户：**"修改完数据收集器后自动提交代码 #12"**
