@@ -278,11 +278,11 @@ Claude Code 在以下情况时，**考虑更新 `README.md` 文件**：
 
 # 🚀 Git 自动化工作流
 
-> 基于 `@project-rules/commit.mdc` 规则，扩展 NumLogic 项目的 AI 协作流程
+> 基于 `@project-rules-cn/提交规范.mdc` 规则，扩展 NumLogic 项目的 AI 协作流程
 
 ## 核心提交规则
 
-使用 `@project-rules/commit.mdc` 的标准化提交流程：
+使用 `@project-rules-cn/提交规范.mdc` 的标准化提交流程：
 - 自动预检查 (lint/build/docs)
 - Conventional commits 格式
 - 完整的 emoji 类型映射 (28 种)
@@ -349,7 +349,7 @@ Claude 执行流程：
 
 - 如果用户未提供 issue 编号，提醒创建或使用通用 issue
 - 建议预设通用 issue：#1(文档), #2(配置), #3(功能), #4(修复)
-- 必要时可使用 `/commit-fast` 进行快速提交
+- 必要时可使用 `/commit-fast` 进行快速提交 (参考: `@project-rules-cn/快速提交.mdc`)
 
 ---
 
