@@ -28,7 +28,7 @@ NumLogic/
 ├── NumLogic.code-workspace      # VS Code 工作区配置
 ├── README.md                    # 项目说明文档(新增)
 ├── structure.md                 # 项目结构记录文档（本文件）
-├── project-rules/               # 英文版项目规则文件(原有)
+├── project-rules/               # 英文版项目规则文件(来源: Agent Rules)
 │   ├── add-to-changelog.mdc    # 更新变更日志规则
 │   ├── analyze-issue.mdc       # GitHub issue 分析规则
 │   ├── bug-fix.mdc             # Bug 修复完整流程
